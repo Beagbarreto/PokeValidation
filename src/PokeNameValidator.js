@@ -10,10 +10,23 @@ export default function PokeNameValidator() {
     setHiddenPokemon(randomPokemon);
   }, []);
 
-  const handleChange = (e) => {
-    setTypedInfo(e.target.value);
-    console.log(typedInfo);
+  // useEffect(() => {
+  // }, []);
+
+  const isMatch = () => {
+    if (typedInfo.toLowerCase() === hiddenPokemon.toLowerCase()) {
+      alert("Correct! Play again?");
+    } else {
+      console.log("Holy Errors Batman! Try again!");
+    }
   };
+
+  if (typedInfo.length >= hiddenPokemon.length) {
+    isMatch();
+  }
+
+  console.log("TYPING", typedInfo);
+  console.log("FROM OUTSIDE", hiddenPokemon);
 
   return (
     <div className="app">
@@ -25,7 +38,7 @@ export default function PokeNameValidator() {
       <p className="secondary">Type the Pokémon name correctly:</p>
       <input
         type="text"
-        onChange={handleChange}
+        onChange={(e) => setTypedInfo(e.target.value)}
         placeholder="Enter the Pokémon name"
       />
     </div>
