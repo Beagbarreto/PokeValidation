@@ -4,26 +4,25 @@ import pokemons from "./pokemons";
 export default function PokeNameValidator() {
   const [typedInfo, setTypedInfo] = useState("");
   const [hiddenPokemon, setHiddenPokemon] = useState();
+  const initialState = "";
 
   useEffect(() => {
     const randomPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
     setHiddenPokemon(randomPokemon);
   }, []);
 
-  // useEffect(() => {
-  // }, []);
-
-  const isMatch = () => {
-    if (typedInfo.toLowerCase() === hiddenPokemon.toLowerCase()) {
-      alert("Correct! Play again?");
-    } else {
-      console.log("Holy Errors Batman! Try again!");
-    }
-  };
-
-  if (typedInfo.length >= hiddenPokemon.length) {
-    isMatch();
+  // const isMatch = () => {
+  if (typedInfo.toLowerCase() === hiddenPokemon.toLowerCase()) {
+    alert("Correct! Play again?");
+    setTypedInfo(initialState);
+  } else {
+    console.log("Holy Errors Batman! Try again!");
   }
+  // };
+
+  // if (typedInfo.length >= hiddenPokemon.length) {
+  //   isMatch();
+  // }
 
   console.log("TYPING", typedInfo);
   console.log("FROM OUTSIDE", hiddenPokemon);
@@ -32,8 +31,8 @@ export default function PokeNameValidator() {
     <div className="app">
       <h2>Mini Challenge 4: Poke Name Validator</h2>
       <p>
-        Pokémon name: {hiddenPokemon}
-        <strong>{/** random pokemon name should appear here */}</strong>
+        Pokémon name:
+        <strong> {hiddenPokemon}</strong>
       </p>
       <p className="secondary">Type the Pokémon name correctly:</p>
       <input
