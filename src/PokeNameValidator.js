@@ -2,9 +2,18 @@ import React, { useState, useEffect } from "react";
 import pokemons from "./pokemons";
 
 export default function PokeNameValidator() {
-  /**
-   * Component logic goes here
-   */
+  const [typedInfo, setTypedInfo] = useState("");
+
+  // useEffect(() => {
+  //   //setTypedInfo(pokemons);
+  //   console.log(typedInfo);
+  // }, []);
+
+  const handleChange = (e) => {
+    setTypedInfo(e.target.value);
+    console.log(typedInfo);
+  };
+
   const randomPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
 
   return (
@@ -15,7 +24,11 @@ export default function PokeNameValidator() {
         <strong>{/** random pokemon name should appear here */}</strong>
       </p>
       <p className="secondary">Type the Pokémon name correctly:</p>
-      <input type="text" placeholder="Enter the Pokémon name" />
+      <input
+        type="text"
+        onChange={handleChange}
+        placeholder="Enter the Pokémon name"
+      />
     </div>
   );
 }
