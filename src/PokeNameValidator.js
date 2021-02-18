@@ -11,18 +11,18 @@ export default function PokeNameValidator() {
     setHiddenPokemon(randomPokemon);
   }, []);
 
-  // const isMatch = () => {
-  if (typedInfo.toLowerCase() === hiddenPokemon.toLowerCase()) {
-    alert("Correct! Play again?");
-    setTypedInfo(initialState);
-  } else {
-    console.log("Holy Errors Batman! Try again!");
-  }
-  // };
+  const isMatch = () => {
+    if (typedInfo.toLowerCase() === hiddenPokemon.toLowerCase()) {
+      alert("Correct! Play again?");
+      setTypedInfo(initialState);
+    } else {
+      console.log("Holy Errors Batman! Try again!");
+    }
+  };
 
-  // if (typedInfo.length >= hiddenPokemon.length) {
-  //   isMatch();
-  // }
+  if (typedInfo.length >= hiddenPokemon.length) {
+    isMatch();
+  }
 
   console.log("TYPING", typedInfo);
   console.log("FROM OUTSIDE", hiddenPokemon);
