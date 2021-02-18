@@ -3,24 +3,23 @@ import pokemons from "./pokemons";
 
 export default function PokeNameValidator() {
   const [typedInfo, setTypedInfo] = useState("");
+  const [hiddenPokemon, setHiddenPokemon] = useState();
 
-  // useEffect(() => {
-  //   //setTypedInfo(pokemons);
-  //   console.log(typedInfo);
-  // }, []);
+  useEffect(() => {
+    const randomPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
+    setHiddenPokemon(randomPokemon);
+  }, []);
 
   const handleChange = (e) => {
     setTypedInfo(e.target.value);
     console.log(typedInfo);
   };
 
-  const randomPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
-
   return (
     <div className="app">
       <h2>Mini Challenge 4: Poke Name Validator</h2>
       <p>
-        Pokémon name: {randomPokemon};
+        Pokémon name: {hiddenPokemon}
         <strong>{/** random pokemon name should appear here */}</strong>
       </p>
       <p className="secondary">Type the Pokémon name correctly:</p>
